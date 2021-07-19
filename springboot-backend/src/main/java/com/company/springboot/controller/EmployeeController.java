@@ -37,6 +37,15 @@ public class EmployeeController {
     }
 
     //build update employee REST API
-    @PutMapping
-    public ResponseEntity<Employee> updateEmployee(){}
+    @PutMapping("{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long id, @RequestBody Employee employee){
+        return new ResponseEntity<Employee>(employeeService.updateEmployee(employee, id), HttpStatus.OK);
+    }
+
+    // delete rest
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id){
+        employeeService.deleteEmployee(id);
+        return new ResponseEntity<String>("Employee delteted succesfully!", HttpStatus.OK);
+    }
 }

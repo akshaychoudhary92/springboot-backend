@@ -84,4 +84,8 @@ public class Employee {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public Employee() {
+
+    }
 }
